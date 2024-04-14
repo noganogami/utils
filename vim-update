@@ -1,0 +1,26 @@
+#!/bin/bash
+
+dir=`pwd`
+cd $HOME/.local/src/vim
+echo "Entering directory '$HOME/.local/src/vim'"
+
+git pull origin master
+
+cd ./src
+echo "Entering directory ''$HOME/.local/src/vim/src'"
+
+make distclean
+
+options="--with-features=huge"
+options="${options} --enable-gui=auto"
+options="${options} --enable-fontset"
+options="${options} --prefix=$HOME/.local"
+options="${options} --enable-fail-if-missing"
+
+./configure ${options}
+
+make
+make install
+
+cd ${pwd} # 念のため
+echo "Leaving directory '$HOME/.local/src/vim/src'"

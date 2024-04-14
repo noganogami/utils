@@ -1,0 +1,15 @@
+#!/bin/bash
+
+dir=`pwd`
+cd $HOME/.local/bin
+echo "Entering directory '$HOME/.local/bin'"
+
+rm -f nvim
+curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+
+chmod u+x nvim.appimage
+
+mv ./nvim.appimage nvim
+
+cd ${pwd} # 念のため
+echo "Leaving directory '$HOME/.local/bin'"
