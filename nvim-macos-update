@@ -1,0 +1,20 @@
+#!/bin/zsh
+
+dir=`pwd`
+cd $HOME/.local
+echo "Entering directory '$HOME/.local'"
+
+rm -f nvim
+curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim-macos.tar.gz
+xattr -c ./nvim-macos.tar.gz
+tar xzvf nvim-macos.tar.gz
+
+mv ./nvim-macos/bin/* ./bin/
+mv ./nvim-macos/share/* ./share/
+mv ./nvim-macos/lib/* ./lib/
+
+rm -f nvim-macos.tar.gz
+rm -rf nvim-macos
+
+cd ${pwd} # 念のため
+echo "Leaving directory '$HOME/.local'"
